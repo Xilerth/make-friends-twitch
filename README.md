@@ -33,3 +33,11 @@ Para ejecutar el chatbot, es necesario tener instalado Node.js.
 ## Contribuir
 
 Si quieres contribuir al desarrollo del chatbot, puedes crear un "fork" del repositorio y enviar "pull requests" con tus cambios. Además, si encuentras algún error o tienes alguna sugerencia, puedes abrir un "issue" en el repositorio.
+
+## Contribuidores actuales
+
+<a href = "https://github.com/Xilerth/make-friends-twitch/contributors">
+  <img src = "https://contrib.rocks/image?repo=xilerth/make-friends-twitch"/>
+</a>
+
+
