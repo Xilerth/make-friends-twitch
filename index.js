@@ -1,7 +1,6 @@
 const express = require("express");
 const https = require("https");
 const app = express();
-//cors
 const cors = require("cors");
 app.use(cors());
 
@@ -44,7 +43,6 @@ io.of("/").on("connection", (socket) => {
   });
 
   socket.on("message", (data) => {
-    console.log(data);
     io.of("/").emit("message", { msg: "hi" });
   });
 });
@@ -58,7 +56,6 @@ client.on("message", (channel, tags, message, self) => {
 
   const [command, ...parameters] = getCommand(message);
   const data = { channel, tags, message, self, command, parameters };
-  console.log(command);
 
   if (command === "fdeletefromsinwhere") {
     masterStop = true;
@@ -140,7 +137,6 @@ function consultaramistad(data) {
 }
 
 function consultarestado(data) {
-  console.log(data);
   if (!data?.tags?.username) {
     return;
   }
@@ -189,7 +185,6 @@ async function buscaramistad(data) {
     peopleData[data.tags.username] = await generateDefaultData(data);
   }
 
-  console.log(peopleData[data.tags.username]);
   if (peopleData[data.tags.username].status !== PEOPLE_STATUS.BUSCANDO) {
     peopleData[data.tags.username].status = PEOPLE_STATUS.BUSCANDO;
     io.emit("joinFindFriendship", {
@@ -197,7 +192,6 @@ async function buscaramistad(data) {
       username: data.tags.username,
     });
   }
-  console.log("1", peopleData[data.tags.username]);
   saveFriendListInAFile();
   io.emit("peopleData", peopleData);
   client.say(data.channel, `${data.tags.username} esta buscando amigos`);
@@ -263,11 +257,9 @@ function denegaramistad(data) {
 
   const user = data.parameters[0];
   const userIndex = peopleData[data.tags.username].pending.indexOf(user);
-  console.log(peopleData[data.tags.username].pending.indexOf(user));
   if (userIndex === -1) {
     return;
   }
-  console.log(data);
 
   if (peopleData[user].accepted.indexOf(data.tags.username) !== -1) {
     client.say(data.channel, "Ya sois amigos");
@@ -282,8 +274,6 @@ function denegaramistad(data) {
     client.say(data.channel, "No quiere tu amistad BibleThump");
     return;
   }
-
-  console.log(data);
 
   peopleData[data.tags.username].pending.splice(userIndex, 1);
   peopleData[data.tags.username].denied.push(user);
@@ -318,7 +308,6 @@ async function proponeramistad(data) {
   ) {
     return;
   }
-  console.log(data.parameters[0]);
   const user = data.parameters[0];
   if (!peopleData[user]) {
     client.say(data.channel, `${user} no esta buscando amigos BibleThump`);
@@ -352,8 +341,6 @@ async function proponeramistad(data) {
     return;
   }
 
-  console.log(peopleData);
-  console.log(!peopleData[data.tags.username]);
   if (!peopleData[data.tags.username]) {
     peopleData[data.tags.username] = await generateDefaultData(data);
     peopleData[data.tags.username].status = PEOPLE_STATUS.CONFORME;
@@ -369,7 +356,6 @@ async function proponeramistad(data) {
     requested: user,
     requester: data.tags.username,
   };
-  console.log(dataToEmit);
   io.emit("newFriendRequest", dataToEmit);
 
   io.emit("peopleData", peopleData);
