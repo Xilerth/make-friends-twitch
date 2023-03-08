@@ -1,4 +1,4 @@
-const credentials = require("./environment.js");
+const credentials = require("../environment.js");
 const tmi = require("tmi.js");
 
 

@@ -4,13 +4,13 @@ Este repositorio contiene el código fuente para un chatbot de Twitch que permit
 ## Funcionalidades
 El chatbot tiene las siguientes funcionalidades:
 
-* `!buscaramigos`: Los usuarios pueden escribir este comando en el chat para buscar amigos. El chatbot responderá con una lista de usuarios que también están buscando amigos.
+* `!buscaramistad`: Los usuarios pueden escribir este comando en el chat para buscar amigos. El chatbot responderá con una lista de usuarios que también están buscando amigos.
 
 * `!proponeramistad <usuario>` : Los usuarios pueden proponer amistad a otro usuario escribiendo este comando seguido del nombre de usuario del usuario al que quieren proponer amistad.
 
-* `!aceptaramigo <usuario>`: Si un usuario recibe una solicitud de amistad, puede aceptarla escribiendo este comando seguido del nombre de usuario del usuario que propuso la amistad.
+* `!aceptaramistad <usuario>`: Si un usuario recibe una solicitud de amistad, puede aceptarla escribiendo este comando seguido del nombre de usuario del usuario que propuso la amistad.
 
-* `!denegaramigo <usuario>`: Si un usuario recibe una solicitud de amistad, puede rechazarla escribiendo este comando seguido del nombre de usuario del usuario que propuso la amistad.
+* `!denegaramistad <usuario>`: Si un usuario recibe una solicitud de amistad, puede rechazarla escribiendo este comando seguido del nombre de usuario del usuario que propuso la amistad.
 
 ## Configuración
 Para utilizar el chatbot, es necesario crear un archivo environment.js en la raíz del proyecto y configurar las siguientes variables de entorno:
