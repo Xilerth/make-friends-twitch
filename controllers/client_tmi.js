@@ -12,7 +12,7 @@ const client = new tmi.Client({
       reconnect: true,
     },
     options: { debug: true },
-    channels: ["afor_digital"],
+    channels: ["xilerth"],
   });
   
 
